@@ -1,0 +1,58 @@
+# Auto-created directories (downloaded/generated at runtime)
+python_embedded/
+git_portable/
+ffmpeg/
+rubberband/
+espeak_ng/
+venvs/
+tts_models/
+output/
+projects_output/
+voices/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+*.egg
+
+# Environment / secrets
+.env
+.env.*
+*.key
+credentials.json
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+nul
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Temp files from install process
+_tcltk.msi
+_tcltk_extract/
+_python_temp/
+python_embedded.zip
+python_installer.exe
+git_portable.zip
+ffmpeg_portable.zip
+rubberband_portable.zip
+espeak_ng.zip
+get-pip.py
+
+# Claude Code
+.claude/

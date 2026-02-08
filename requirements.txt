@@ -1,0 +1,35 @@
+# Core requirements for TTS Module
+# All installed into embedded Python by install.bat
+# (TTS model dependencies are installed in separate venvs)
+
+# --- GUI & Utilities ---
+huggingface_hub>=0.20.0
+requests>=2.28.0
+tqdm>=4.64.0
+
+# --- API Server ---
+fastapi>=0.100.0
+uvicorn>=0.22.0
+python-multipart>=0.0.6
+httpx>=0.25.0
+
+# --- Audio Processing Pipeline ---
+numpy>=1.24.0
+scipy>=1.10.0
+soundfile>=0.12.0
+pydub>=0.25.0
+noisereduce>=2.0.0
+pyloudnorm>=0.1.0
+
+# pyrubberband requires the rubberband CLI binary (optional, tempo adjust
+# will gracefully skip if unavailable)
+pyrubberband>=0.3.0
+
+# --- Whisper Verification ---
+# openai-whisper is installed separately by install.bat with --no-deps
+# to avoid pulling torch (~2.5GB). At runtime, torch comes from whichever
+# model venv is loaded (CUDA-accelerated).
+tiktoken>=0.3.3
+more-itertools
+regex
+numba
