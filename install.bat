@@ -51,9 +51,9 @@ if exist "%PYTHON_EXE%" (
 
 echo [1/9] Downloading Python %PYTHON_VERSION% embedded...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-    "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; ^
-     $ProgressPreference = 'SilentlyContinue'; ^
-     Invoke-WebRequest -Uri '%PYTHON_URL%' -OutFile '%PYTHON_ZIP%'"
+    "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;" ^
+    "$ProgressPreference = 'SilentlyContinue';" ^
+    "Invoke-WebRequest -Uri '%PYTHON_URL%' -OutFile '%PYTHON_ZIP%'"
 
 if not exist "%PYTHON_ZIP%" (
     echo.
@@ -89,17 +89,17 @@ if not exist "%PYTHON_DIR%\Lib\site-packages" (
 
 :: Rewrite the ._pth file to enable import site and site-packages
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-    "$pthFiles = Get-ChildItem '%PYTHON_DIR%\python*._pth'; ^
-     if ($pthFiles.Count -gt 0) { ^
-         $pth = $pthFiles[0]; ^
-         $zipName = (Get-ChildItem '%PYTHON_DIR%\python*.zip' | Select-Object -First 1).Name; ^
-         if (-not $zipName) { $zipName = 'python310.zip' }; ^
-         $content = @($zipName, '.', 'Lib', 'Lib\site-packages', '', 'import site'); ^
-         $content | Set-Content -Path $pth.FullName -Encoding ASCII; ^
-         Write-Host '   Configured:' $pth.Name ^
-     } else { ^
-         Write-Host 'WARNING: No ._pth file found' ^
-     }"
+    "$pthFiles = Get-ChildItem '%PYTHON_DIR%\python*._pth';" ^
+    "if ($pthFiles.Count -gt 0) {" ^
+    "  $pth = $pthFiles[0];" ^
+    "  $zipName = (Get-ChildItem '%PYTHON_DIR%\python*.zip' | Select-Object -First 1).Name;" ^
+    "  if (-not $zipName) { $zipName = 'python310.zip' };" ^
+    "  $content = @($zipName, '.', 'Lib', 'Lib\site-packages', '', 'import site');" ^
+    "  $content | Set-Content -Path $pth.FullName -Encoding ASCII;" ^
+    "  Write-Host '   Configured:' $pth.Name" ^
+    "} else {" ^
+    "  Write-Host 'WARNING: No ._pth file found'" ^
+    "}"
 
 :: ============================================
 :: Step 3: Bootstrap pip (via get-pip.py)
@@ -109,9 +109,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command ^
 if %errorlevel% neq 0 (
     echo [3/9] Downloading get-pip.py...
     powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-        "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; ^
-         $ProgressPreference = 'SilentlyContinue'; ^
-         Invoke-WebRequest -Uri 'https://bootstrap.pypa.io/get-pip.py' -OutFile '%PYTHON_DIR%\get-pip.py'"
+        "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;" ^
+        "$ProgressPreference = 'SilentlyContinue';" ^
+        "Invoke-WebRequest -Uri 'https://bootstrap.pypa.io/get-pip.py' -OutFile '%PYTHON_DIR%\get-pip.py'"
 
     if not exist "%PYTHON_DIR%\get-pip.py" (
         echo ERROR: Failed to download get-pip.py.
@@ -146,9 +146,9 @@ if %errorlevel% neq 0 (
 
     echo   Downloading tcltk.msi (~3.4 MB)...
     powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-        "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; ^
-         $ProgressPreference = 'SilentlyContinue'; ^
-         Invoke-WebRequest -Uri '%TCLTK_MSI_URL%' -OutFile '%TCLTK_MSI%'"
+        "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;" ^
+        "$ProgressPreference = 'SilentlyContinue';" ^
+        "Invoke-WebRequest -Uri '%TCLTK_MSI_URL%' -OutFile '%TCLTK_MSI%'"
 
     if not exist "%TCLTK_MSI%" (
         echo WARNING: Failed to download tcltk.msi. GUI may not work.
@@ -210,9 +210,9 @@ if exist "%GIT_EXE%" (
 
 echo [5/9] Downloading portable Git %GIT_VERSION%...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-    "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; ^
-     $ProgressPreference = 'SilentlyContinue'; ^
-     Invoke-WebRequest -Uri '%GIT_URL%' -OutFile '%GIT_ZIP%'"
+    "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;" ^
+    "$ProgressPreference = 'SilentlyContinue';" ^
+    "Invoke-WebRequest -Uri '%GIT_URL%' -OutFile '%GIT_ZIP%'"
 
 if not exist "%GIT_ZIP%" (
     echo WARNING: Failed to download Git. Some features may not work.
@@ -247,9 +247,9 @@ if "%FFMPEG_FOUND%"=="1" (
 
 echo [6/9] Downloading portable FFmpeg...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-    "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; ^
-     $ProgressPreference = 'SilentlyContinue'; ^
-     Invoke-WebRequest -Uri '%FFMPEG_URL%' -OutFile '%FFMPEG_ZIP%'"
+    "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;" ^
+    "$ProgressPreference = 'SilentlyContinue';" ^
+    "Invoke-WebRequest -Uri '%FFMPEG_URL%' -OutFile '%FFMPEG_ZIP%'"
 
 if not exist "%FFMPEG_ZIP%" (
     echo WARNING: Failed to download FFmpeg. Audio features may not work.
@@ -282,9 +282,9 @@ if "%RUBBERBAND_FOUND%"=="1" (
 
 echo [6b/9] Downloading Rubberband %RUBBERBAND_VERSION% ^(tempo adjustment^)...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-    "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; ^
-     $ProgressPreference = 'SilentlyContinue'; ^
-     Invoke-WebRequest -Uri '%RUBBERBAND_URL%' -OutFile '%RUBBERBAND_ZIP%'"
+    "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;" ^
+    "$ProgressPreference = 'SilentlyContinue';" ^
+    "Invoke-WebRequest -Uri '%RUBBERBAND_URL%' -OutFile '%RUBBERBAND_ZIP%'"
 
 if not exist "%RUBBERBAND_ZIP%" (
     echo WARNING: Failed to download Rubberband. Tempo adjustment will be unavailable.
@@ -320,9 +320,9 @@ for /d %%D in ("%ESPEAK_DIR%\eSpeak*") do (
 
 echo [6c/9] Downloading eSpeak NG 1.52 ^(required for Kokoro TTS^)...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-    "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; ^
-     $ProgressPreference = 'SilentlyContinue'; ^
-     Invoke-WebRequest -Uri 'https://github.com/espeak-ng/espeak-ng/releases/download/1.52.0/espeak-ng.msi' -OutFile '%ESPEAK_MSI%'"
+    "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;" ^
+    "$ProgressPreference = 'SilentlyContinue';" ^
+    "Invoke-WebRequest -Uri 'https://github.com/espeak-ng/espeak-ng/releases/download/1.52.0/espeak-ng.msi' -OutFile '%ESPEAK_MSI%'"
 
 if not exist "%ESPEAK_MSI%" (
     echo WARNING: Failed to download eSpeak NG. Kokoro TTS will not work.
