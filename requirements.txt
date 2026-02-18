@@ -3,6 +3,7 @@
 # (TTS model dependencies are installed in separate venvs)
 
 # --- GUI & Utilities ---
+virtualenv>=20.25.0
 huggingface_hub>=0.20.0
 requests>=2.28.0
 tqdm>=4.64.0

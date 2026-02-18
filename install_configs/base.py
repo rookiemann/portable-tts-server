@@ -178,8 +178,8 @@ def run_git_clone(
             return False, "\n".join(output_lines)
 
         # Run editable install if requested
-        if editable and os.path.exists(os.path.join(clone_path, "setup.py")) or \
-           os.path.exists(os.path.join(clone_path, "pyproject.toml")):
+        if editable and (os.path.exists(os.path.join(clone_path, "setup.py")) or
+                         os.path.exists(os.path.join(clone_path, "pyproject.toml"))):
             if log_callback:
                 log_callback(f"Installing {repo_name} in editable mode...")
 

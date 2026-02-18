@@ -1635,8 +1635,10 @@ class TTSManagerApp:
 
             if not env.venv_path.exists():
                 self.log(f"Creating virtual environment at {env.venv_path}...")
+                # Use virtualenv (pip-installed) instead of venv (stdlib) because
+                # embedded Python does not include the venv module.
                 result = subprocess.run(
-                    [PYTHON_PATH, "-m", "venv", str(env.venv_path)],
+                    [str(PYTHON_PATH), "-m", "virtualenv", str(env.venv_path)],
                     capture_output=True, text=True
                 )
                 if result.returncode != 0:
