@@ -56,6 +56,10 @@ Send text in, get broadcast-ready audio out. Voice cloning, dialogue, emotion co
 
 ## Quick Start
 
+### Download
+
+**[Download Latest Release (v3.0.2)](https://github.com/rookiemann/portable-tts-server/releases/latest/download/portable-tts-server-v3.0.2.zip)** — Extract anywhere and run `install.bat`.
+
 ### First-Time Setup
 ```batch
 install.bat
@@ -571,6 +575,14 @@ Runs on CPU only. Inference is slow (~5 minutes per generation) but produces goo
 ---
 
 ## Version History
+
+### v3.0.2 (2026-02-17)
+- Fix venv creation failing with embedded Python (`python -m venv` → `python -m virtualenv`)
+- Fix operator precedence bug in `run_git_clone()` editable install check
+- Add `virtualenv` to requirements.txt for bootstrap
+
+### v3.0.1 (2026-02-11)
+- Fix `install.bat` PowerShell multi-line commands failing on fresh installs
 
 ### v3.0.0 (2026-02-06)
 - Gateway + Worker architecture with subprocess isolation
