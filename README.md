@@ -1,6 +1,6 @@
 # TTS Module
 
-![License: MIT](https://img.shields.io/github/license/rookiemann/portable-tts-server) ![Platform: Windows](https://img.shields.io/badge/Platform-Windows%2010%2F11-blue) ![Python](https://img.shields.io/badge/Python-3.10%20Portable-green) ![Models](https://img.shields.io/badge/TTS%20Models-10-orange) ![Stars](https://img.shields.io/github/stars/rookiemann/portable-tts-server)
+![License: MIT](https://img.shields.io/github/license/aivrar/portable-tts-server) ![Platform: Windows](https://img.shields.io/badge/Platform-Windows%2010%2F11-blue) ![Python](https://img.shields.io/badge/Python-3.10%20Portable-green) ![Models](https://img.shields.io/badge/TTS%20Models-10-orange) ![Stars](https://img.shields.io/github/stars/aivrar/portable-tts-server)
 
 **Portable multi-GPU text-to-speech server for Windows — 10 models, one-click install, zero dependencies.**
 
@@ -58,7 +58,7 @@ Send text in, get broadcast-ready audio out. Voice cloning, dialogue, emotion co
 
 ### Download
 
-**[Download Latest Release (v3.0.2)](https://github.com/rookiemann/portable-tts-server/releases/latest/download/portable-tts-server-v3.0.2.zip)** — Extract anywhere and run `install.bat`.
+**[Download Latest Release (v3.0.2)](https://github.com/aivrar/portable-tts-server/releases/latest/download/portable-tts-server-v3.0.2.zip)** — Extract anywhere and run `install.bat`.
 
 ### First-Time Setup
 ```batch
